@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "../styles/movieList.css" // Assuming you have a CSS file for styles
 
-const API_URL = 'https://movies-w4fv.onrender.com'
+const API_URL = 'https://movies2-mir5.onrender.com'
 
 export default function MovieList() {
   const [movies, setMovies] = useState([])
