@@ -1,22 +1,22 @@
-import "../styles/addMovie.css" // Assuming you have a CSS file for styles
+import "../styles/addMovie.css";
 import axios from 'axios';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = 'https://movies-w4fv.onrender.com'
+const API_URL = 'https://movies-w4fv.onrender.com';
 
 export default function AddMovie() {
-  const [title, setTitle] = useState('')
-  const [year, setYear] = useState('')
-  const [genre, setGenre] = useState('')
-  const [description, setDescription] = useState('')
-  const navigate = useNavigate()
+  const [title, setTitle] = useState('');
+  const [year, setYear] = useState('');
+  const [genre, setGenre] = useState('');
+  const [description, setDescription] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!title.trim()) {
-      alert('Film nomi kiritilishi shart')
-      return
+      alert('Film nomi kiritilishi shart');
+      return;
     }
     try {
       await axios.post(`${API_URL}/movies`, {
@@ -24,36 +24,65 @@ export default function AddMovie() {
         year: year ? Number(year) : null,
         genre,
         description,
-      })
-      navigate('/')
+      });
+      // Formani tozalash
+      setTitle('');
+      setYear('');
+      setGenre('');
+      setDescription('');
+      navigate('/');
     } catch (error) {
-      console.error('Xatolik:', error)
-      alert('Film qo‘shishda xatolik yuz berdi')
+      console.error('Xatolik:', error);
+      alert('Film qo‘shishda xatolik yuz berdi');
     }
-  }
+  };
 
   return (
     <div className="container">
       <h1>Yangi Film Qo‘shish</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Film nomi:</label><br />
-          <input type="text" value={title} onChange={e => setTitle(e.target.value)} required />
+        <div className="form-group">
+          <label htmlFor="title">Film nomi:</label><br />
+          <input
+            id="title"
+            type="text"
+            placeholder="Film nomini kiriting"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            required
+          />
         </div>
-        <div>
-          <label>Yili:</label><br />
-          <input type="number" value={year} onChange={e => setYear(e.target.value)} />
+        <div className="form-group">
+          <label htmlFor="year">Yili:</label><br />
+          <input
+            id="year"
+            type="number"
+            placeholder="Film yilini kiriting"
+            value={year}
+            onChange={e => setYear(e.target.value)}
+          />
         </div>
-        <div>
-          <label>Janri:</label><br />
-          <input type="text" value={genre} onChange={e => setGenre(e.target.value)} />
+        <div className="form-group">
+          <label htmlFor="genre">Janri:</label><br />
+          <input
+            id="genre"
+            type="text"
+            placeholder="Film janrini kiriting"
+            value={genre}
+            onChange={e => setGenre(e.target.value)}
+          />
         </div>
-        <div>
-          <label>Tavsif:</label><br />
-          <textarea value={description} onChange={e => setDescription(e.target.value)} />
+        <div className="form-group">
+          <label htmlFor="description">Tavsif:</label><br />
+          <textarea
+            id="description"
+            placeholder="Film tavsifini kiriting"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+          />
         </div>
-        <button type="submit">Qo‘shish</button>
+        <button type="submit" className="submit-btn">Qo‘shish</button>
       </form>
     </div>
-  )
+  );
 }

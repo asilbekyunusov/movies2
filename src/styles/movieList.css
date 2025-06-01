@@ -1,23 +1,40 @@
-/* MovieList komponenti uchun dizayn */
 .container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #22254b;
+  color: #e0e6f3;
+  border-radius: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 15px rgba(0, 150, 255, 0.3);
 }
 
-.container h1 {
-  font-size: 2.5rem;
-  color: #00ffcc;
+h1 {
   text-align: center;
-  margin-bottom: 2rem;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-  animation: neonGlow 1.5s ease-in-out infinite alternate;
+  margin-bottom: 30px;
+  color: #54e6ff;
+  text-shadow: 0 0 5px #54e6ff;
 }
 
-/* Movie item dizayni */
+.loading {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.spinner {
+  border: 6px solid #ccc;
+  border-top: 6px solid #54e6ff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -27,132 +44,48 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(0, 255, 255, 0.3);
+  background: #2a2e62;
+  margin-bottom: 15px;
+  padding: 15px 20px;
   border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
 }
 
 .movie-item:hover {
-  transform: perspective(1000px) rotateX(3deg) rotateY(3deg);
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
-}
-
-.movie-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
-  transition: 0.5s;
-}
-
-.movie-item:hover::before {
-  left: 100%;
+  background: #3b4190;
 }
 
 .movie-title {
-  font-size: 1.3rem;
-  color: #ffffff;
   font-weight: 600;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  font-size: 1.1rem;
 }
 
-/* Tugmalar dizayni */
 .button {
-  padding: 0.6rem 1.2rem;
   border: none;
+  padding: 8px 14px;
+  margin-left: 10px;
   border-radius: 5px;
-  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+  color: white;
   text-decoration: none;
-  margin-left: 0.5rem;
 }
 
 .button.edit {
-  background: linear-gradient(90deg, #00ffcc, #00b7b7);
-  color: #ffffff;
+  background-color: #3cb371; /* mediumseagreen */
 }
 
 .button.edit:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  background-color: #2a7a4a;
 }
 
 .button.delete {
-  background: linear-gradient(90deg, #ff00cc, #b700b7);
-  color: #ffffff;
+  background-color: #e74c3c; /* alizarin */
 }
 
 .button.delete:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 0, 204, 0.7);
-  text-shadow: 0 0 5px rgba(255, 0, 204, 0.5);
-}
-
-/* Loading spinner dizayni */
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-}
-
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(0, 255, 255, 0.3);
-  border-top: 5px solid #00ffcc;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Hech qanday film yo‘q xabari */
-p {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #cccccc;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-/* Neon glow animatsiyasi */
-@keyframes neonGlow {
-  0% {
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
-  }
-  100% {
-    text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.5);
-  }
-}
-
-/* Responsive dizayn */
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .movie-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .button {
-    width: 100%;
-    text-align: center;
-  }
+  background-color: #a83227;
 }
