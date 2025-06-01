@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import '../styles/editMovie.css' // Assuming you have a CSS file for styles
-const API_URL = 'https://movies2-mir5.onrender.com'
+const API_URL = 'https://movies-w4fv.onrender.com'
 
 export default function EditMovie() {
   const { id } = useParams()
