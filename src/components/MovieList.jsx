@@ -59,7 +59,13 @@ export default function MovieList() {
                 {movie.title} ({movie.year}) — {movie.genre}
               </div>
               <div>
-                <Link to={`/edit/${movie.id}`} className="button edit">Tahrirlash</Link>
+                <button
+                  type="button"
+                  onClick={() => {Navigate('/edit/${movie.id}')}}
+                  className="button delete"
+                >
+                  Tahrirlash
+                </button>
                 <button
                   type="button"
                   onClick={() => deleteMovie(movie.id)}
