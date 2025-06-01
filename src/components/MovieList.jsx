@@ -66,13 +66,13 @@ export default function MovieList() {
                 >
                   Tahrirlash
                 </button>
-                <button
+                {/* <button
                   type="button"
                   onClick={() => deleteMovie(movie.id)}
                   className="button delete"
                 >
                   O‘chirish
-                </button>
+                </button> */}
               </div>
             </li>
           ))}
